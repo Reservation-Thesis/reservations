@@ -120,18 +120,26 @@ app.get("/shops/1", (req, res) => {
   });
 });
 
-app.get("/id", function(req, res) {
-  var d = req.query.id;
-  console.log(d);
-  console.log("Request Type:", req.method);
-  ShopsModel.findOne({ id: d }, (err, data) => {
-    if (err) {
-      console.log("Err", err);
-    }
-    console.log("fromserver", data);
-    res.status(200).send(data);
+// app.get("/id", function(req, res) {
+//   var d = req.query.id;
+//   console.log(d);
+//   console.log("Request Type:", req.method);
+//   ShopsModel.findOne({ id: d }, (err, data) => {
+//     if (err) {
+//       console.log("Err", err);
+//     }
+//     console.log("fromserver", data);
+//     res.status(200).send(data);
+//   });
+//   //next();
+// });
+app.get("/item/:id", (req, res) => {
+  ShopsModel.findOne({}).then(ShopsModel => {
+    res.json(ShopsModel);
   });
-  //next();
+  Appointments.findOne({}).then(Appointments => {
+    res.json(Appointments);
+  });
 });
 
 //============================================================================

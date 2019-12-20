@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+
 import $ from "jquery";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -10,7 +11,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 // import MediaCard from "./cardForItem";
-// import NavBar from "./NavBar";
+import NavBar from "./NavBar";
 import Calender from "./Calender";
 import SimpleImageSlider from "react-simple-image-slider";
 
@@ -65,6 +66,7 @@ export default class ItemComponent extends Component {
       error: function(err) {
         console.log(err, "there is error in my sweet function!");
       }
+      ///
     });
   }
 
@@ -72,7 +74,7 @@ export default class ItemComponent extends Component {
     const useStyles = makeStyles({
       card: {
         minWidth: 400,
-        minHeight: 600,
+        // minHeight: 600,
         float: "left",
         marginLeft: "30%",
 
@@ -80,7 +82,7 @@ export default class ItemComponent extends Component {
         fontSize: "36px"
       },
       media: {
-        height: 500
+        // height: 500
       }
     });
     var that = this;
@@ -90,48 +92,54 @@ export default class ItemComponent extends Component {
       return (
         <>
           <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
+            {/* <CardActionArea> */}
+            {/* <CardMedia
                 className={classes.media}
-                image={that.state.mainImage}
+                // image={that.state.mainImage}
                 title="marrge hall"
-              />
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="h2"
-                  style={{ fontSize: "2.5rem" }}
-                >
-                  <center>{that.state.name}</center>
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                  style={{ fontSize: "1.5rem" }}
-                >
-                  <div
-                    style={{
-                      marginRight: "3em",
-                      marginTop: "2em",
-                      marginLeft: "7em"
-                    }}
-                  >
-                    <center>
-                      <h2>{that.state.price} per Hour</h2>
-                      <h2>Details : {that.state.details}</h2>
-                      <h2>
-                        {" "}
-                        Contact Info : {that.state.contactInfo} <br />
-                      </h2>
-                    </center>
-                  </div>
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button
+              /> */}
+            {/* <CardContent> */}
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h2"
+              style={{ fontSize: "2.5rem" }}
+            >
+              <center style={{ color: "#8D1B31", fontSize: "4rem" }}>
+                {that.state.name}
+              </center>
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ fontSize: "1.5rem" }}
+            >
+              <div
+                style={{
+                  marginRight: "3em",
+                  marginTop: "2em",
+                  marginLeft: "3em"
+                }}
+              >
+                <center>
+                  <h2 style={{ color: "#A44D5E" }}>
+                    {that.state.price} per Hour
+                  </h2>
+                  <h2 style={{ color: "#A44D5E" }}>
+                    Details : {that.state.details}
+                  </h2>
+                  <h2 style={{ color: "#A44D5E", marginBottom: "1rem" }}>
+                    {" "}
+                    Contact Info : {that.state.contactInfo} <br />
+                  </h2>
+                </center>
+              </div>
+            </Typography>
+            {/* </CardContent> */}
+            {/* </CardActionArea> */}
+            {/* <CardActions> */}
+            {/* <Button
                 variant="contained"
                 color="secondary"
                 style={{
@@ -141,8 +149,8 @@ export default class ItemComponent extends Component {
                 }}
               >
                 reserve now!
-              </Button>
-              <Button
+              </Button> */}
+            {/* <Button
                 variant="contained"
                 color="secondary"
                 style={{
@@ -152,39 +160,60 @@ export default class ItemComponent extends Component {
                 }}
               >
                 see available time
-              </Button>
-            </CardActions>
+              </Button> */}
+            {/* </CardActions> */}
           </Card>
-          <Calender />
         </>
       );
     };
-
+    ///
     return (
-      <div>
+      <center>
         {" "}
         {/* <NavBar /> */}
         <span style={{ display: "block" }}>
           <center>
             <SimpleImageSlider
               style={{ marginTop: "8rem" }}
-              width={1200}
+              width={"80%"}
               height={400}
               images={this.state.imageSlider}
             />
-            <MediaCard />
+            <center>
+              <iframe
+                //   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13536.790522042322!2d35.83889189999999!3d31.9826576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca185283dfb89%3A0x611dda32fcd10faa!2z2LPZitiq2Yog2YXZiNmE!5e0!3m2!1sar!2sjo!4v1575807547103!5m2!1sar!2sjo"
+                src={this.state.location}
+                width="80%"
+                height="300"
+                frameborder="0"
+                style={{
+                  border: "1",
+                  float: "right",
+                  marginTop: "3rem",
+                  marginRight: "12.3rem"
+                }}
+                allowfullscreen=""
+              ></iframe>
+            </center>
+            <center>
+              <MediaCard />
+            </center>
+
+            <div style={{ width: "80%", height: "15%" }}>
+              <Calender />
+            </div>
           </center>
         </span>
-        <iframe
+        {/* <iframe
           //   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13536.790522042322!2d35.83889189999999!3d31.9826576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca185283dfb89%3A0x611dda32fcd10faa!2z2LPZitiq2Yog2YXZiNmE!5e0!3m2!1sar!2sjo!4v1575807547103!5m2!1sar!2sjo"
           src={this.state.location}
-          width="100%"
+          width="1200"
           height="300"
           frameborder="0"
           style={{ border: "1", float: "right", marginTop: "3rem" }}
           allowfullscreen=""
-        ></iframe>
-      </div>
+        ></iframe> */}
+      </center>
     );
   }
 }

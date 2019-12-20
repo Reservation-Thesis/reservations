@@ -59,7 +59,7 @@ function App() {
           <Route path="/Calender" exact component={Calender} />
           <Route path="/MediaCard" exact component={MediaCard} />
           <Route path="/ShopCalender" exact component={ShopCalender} />
-          {/* <Route path="/item/:id" component={ItemComponent} /> */}
+          <Route path="/item/:id" component={ItemComponent} />
         </Switch>
       </div>
     </Router>

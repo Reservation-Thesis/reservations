@@ -48,30 +48,10 @@ app.get("/", (req, res) => {
       res.send("error");
     });
 });
-//background image
-app.get("/:id2", (req, res) => {
-  var id = req.params.id2;
-  BgImgModel.findOne({ id: id })
-    .then(BgImgModel => {
-      res.json(BgImgModel);
-    })
-    .catch(err => {
-      res.send("error");
-    });
-});
 
-// app.get("/:id", (req, res) => {
-//   var idIn = req.params.id;
-//   console.log("dd", idIn);
-//   ShopsModel.find({})
-//     .then(ShopsModel => {
-//       res.json(ShopsModel);
-//     })
-//     .catch(err => {
-//       res.send("error");
-//     });
-// });
-// app.get("/id/:id", (req, res) => {
+//background image
+
+// app.get("/shops/:id", (req, res) => {
 //   var id = req.params.id;
 //   ShopsModel.find({})
 //     .then(ShopsModel => {
@@ -81,6 +61,39 @@ app.get("/:id2", (req, res) => {
 //       res.send("error");
 //     });
 // });
+// app.get("/:id2", (req, res) => {
+//   var id = req.params.id2;
+//   BgImgModel.findOne({ id: id })
+//     .then(BgImgModel => {
+//       res.json(BgImgModel);
+//     })
+//     .catch(err => {
+//       res.send("error");
+//     });
+// });
+
+app.get("/:id2", (req, res) => {
+  var id = req.params.id2;
+  BgImgModel.findOne({ id: id })
+    .then(BgImgModel => {
+      res.json(BgImgModel);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+app.get("/shops/:id", (req, res) => {
+  var id = req.params.id;
+  console.log("id", id);
+  ShopsModel.find({ shopId: id })
+    .then(ShopsModel => {
+      res.json(ShopsModel);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
 
 // app.get("/bg", (req, res) => {
 //   BgImgModel.findOne({ id: 1 }).then(BgImgModel => {

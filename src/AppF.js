@@ -23,7 +23,6 @@ export default class AppF extends React.Component {
       type: "GET",
       success: function(data) {
         this.setState({
-          id: data.id,
           backgroundImg: data.backgroundImg
         });
       }.bind(this),

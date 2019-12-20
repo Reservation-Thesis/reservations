@@ -49,10 +49,11 @@ function App() {
           <Route path="/profileU" exact component={PO} />
           <Route path="/owner" exact component={Owner} />
           <Route path="/list" exact component={NestedList} />
-          {/* <Route  path='/Item' exact component={Item} /> */}
-          {/* <Route  path='/ListItem' exact component={ListItem} /> */}
-          <Route path="/itemComponent" exact component={ItemComponent} />
+          {/* <Route path="/itemComponent" exact component={ItemComponent} /> */}
+          {/* <Route path="/id/:id" exact component={shops} /> */}
+          <Route path="/:id2" exact component={shops} />
           <Route path="/:id" exact component={shops} />
+          {/* <Route path="/:id/:id" exact component={shops} /> */}
           <Route path="/:id/:id" exact component={ItemComponent} />
           <Route path="/Appointments" exact component={Appointments} />
           <Route path="/Calender" exact component={Calender} />

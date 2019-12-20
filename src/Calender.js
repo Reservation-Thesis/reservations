@@ -166,7 +166,7 @@ class AppointmentFormContainerBasic extends React.PureComponent {
       ...appointmentData,
       ...appointmentChanges
     };
-    var li = window.location.pathname.slice(7);
+    var li = window.location.pathname.slice(5);
     console.log(li);
     const isNewAppointment = appointmentData._id === undefined;
     const applyChanges = isNewAppointment
@@ -447,11 +447,13 @@ class Calender extends React.PureComponent {
         data = [...data, { _id: startingAddedId, ...added }];
       }
       if (changed) {
-        data = data.map(appointment =>
-          changed[appointment._id]
-            ? { ...appointment, ...changed[appointment._id] }
-            : appointment
-        );
+        data =
+          Array.isArray(data) &&
+          data.map(appointment =>
+            changed[appointment._id]
+              ? { ...appointment, ...changed[appointment._id] }
+              : appointment
+          );
       }
       if (deleted !== undefined) {
         this.setDeletedAppointmentId(deleted);

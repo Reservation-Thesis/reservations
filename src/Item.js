@@ -47,9 +47,9 @@ const Item = () => {
   useEffect(() => {
     var path = window.location.href;
     var myPath = path.split("/");
-    var id = myPath[1];
+    var id = myPath[myPath.length - 1];
 
-    axios.get(`:id/${id}`).then(({ data }) => {
+    axios.get(`shops/${id}`).then(({ data }) => {
       setData(data);
     });
   }, [setData]);

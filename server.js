@@ -12,7 +12,11 @@ process.env.SECRET_KEY = "secret";
 // //Config DB
 const mongoURI = require("./config/keys").mongoURI;
 
-mongoose.connect(mongoURI, { useNewUrlParser: true });
+mongoose.connect(
+  mongoURI,
+  { useNewUrlParser: true },
+  { useUnifiedTopology: true }
+);
 
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -23,32 +27,81 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("src"));
 app.use(cors());
-const reservationsModel = require("./models/item.js").reservationsModel;
-const hallsModel = require("./models/item.js").hallsModel;
 const ShopsModel = require("./models/item.js").ShopsModel;
+const BgImgModel = require("./models/item.js").BgImgModel;
 const Coll = require("./models/item.js").Coll;
 const Appointments = require("./models/item.js").AppointmentsModel;
+const mainModel = require("./models/item.js").mainModel;
 const saveAppointment = require("./models/item.js");
 
-app.post("/Appointments", function(req, res) {
-  saveAppointment.saveAppointment(req.body, data => {
-    console.log("data is: ", data);
-    res.send(data);
-  });
+// app.post("/Appointments", function(req, res) {
+//   saveAppointment.saveAppointment(req.body, data => {
+//     console.log("data is: ", data);
+//     res.send(data);
+//   });
+// });
+app.get("/", (req, res) => {
+  mainModel
+    .find({})
+    .then(mainModel => res.json(mainModel))
+    .catch(err => {
+      res.send("error");
+    });
+});
+//background image
+app.get("/:id2", (req, res) => {
+  var id = req.params.id2;
+  BgImgModel.findOne({ id: id })
+    .then(BgImgModel => {
+      res.json(BgImgModel);
+    })
+    .catch(err => {
+      res.send("error");
+    });
 });
 
-app.get("/Appointments", (req, res) => {
-  Appointments.find({}).then(Appointments => {
-    res.json(Appointments);
-  });
-});
+// app.get("/:id", (req, res) => {
+//   var idIn = req.params.id;
+//   console.log("dd", idIn);
+//   ShopsModel.find({})
+//     .then(ShopsModel => {
+//       res.json(ShopsModel);
+//     })
+//     .catch(err => {
+//       res.send("error");
+//     });
+// });
+// app.get("/id/:id", (req, res) => {
+//   var id = req.params.id;
+//   ShopsModel.find({})
+//     .then(ShopsModel => {
+//       res.json(ShopsModel);
+//     })
+//     .catch(err => {
+//       res.send("error");
+//     });
+// });
 
-app.get("/shops/:id", (req, res) => {
-  ShopsModel.findOne({}).then(ShopsModel => {
+// app.get("/bg", (req, res) => {
+//   BgImgModel.findOne({ id: 1 }).then(BgImgModel => {
+//     res.json(BgImgModel);
+//     // console.log("dataaaaaa");
+//   });
+// });
+
+// app.get("/Appointments", (req, res) => {
+//   Appointments.find({}).then(Appointments => {
+//     res.json(Appointments);
+//   });
+// });
+
+app.get("/:id/:id/:id", (req, res) => {
+  ShopsModel.find({}).then(ShopsModel => {
     res.json(ShopsModel);
   });
 });
-app.get("/shops", (req, res) => {
+
+app.get("/shops/1", (req, res) => {
   ShopsModel.find({}).then(ShopsModel => {
     res.json(ShopsModel);
   });
@@ -62,7 +115,7 @@ app.get("/id", function(req, res) {
     if (err) {
       console.log("Err", err);
     }
-    console.log(data);
+    console.log("fromserver", data);
     res.status(200).send(data);
   });
   //next();

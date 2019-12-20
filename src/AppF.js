@@ -1,12 +1,44 @@
 import React from "react";
 import ListItem from "./ListItem";
-
+import NavBar from "./NavBar";
+import $ from "jquery";
 export default class AppF extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: "",
+      backgroundImg: ""
+    };
+  }
+  componentDidMount() {
+    this.getData();
+  }
+  getData() {
+    var path = window.location.href;
+    var myPath = path.split("/");
+    var id2 = myPath[1];
+
+    $.ajax({
+      url: `${id2}`,
+      type: "GET",
+      success: function(data) {
+        this.setState({
+          id: data.id,
+          backgroundImg: data.backgroundImg
+        });
+      }.bind(this),
+      error: function(err) {
+        console.log("error");
+      }
+    });
+  }
+
   render() {
     return (
       <div>
+        <NavBar />
         <img
-          src="https://www.landmarkamman.com/sites/default/files/styles/slider/public/imageblock/MainWedding.jpg?itok=6kRY4AJu"
+          src={this.state.backgroundImg}
           alt="hall"
           width="100%"
           height="600px"

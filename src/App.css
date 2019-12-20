@@ -7,23 +7,41 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: #C2233B;
+  background: #c2233b;
   color: rgb(8, 8, 8);
 }
 
-.nav-links{
+.nav-links {
   width: 40%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-
-.list{
-  background:white;
+.list {
+  background: white;
 }
 
-.pic{
+.pic {
   width: 20%;
   height: 30%;
+}
+.mainImg {
+  width: 400px;
+  height: 330px;
+  box-shadow: 0 4px 8px 0 rgba(0, 140, 186, 0.5);
+  border: 1px solid rgb(247, 247, 247);
+  border-radius: 30px;
+  padding: 10px;
+  margin: 10px;
+  opacity: 1;
+}
+.mainImg:hover {
+  transform: scale(1.4);
+  transition: transform 0.5s ease;
+}
+.yara {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

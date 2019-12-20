@@ -16,17 +16,28 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     margin: "auto",
-    maxWidth: 500
+    marginTop: "30px",
+    maxWidth: 1000
   },
   image: {
-    width: 128,
-    height: 128
+    width: 150,
+    height: 150
   },
   img: {
     margin: "auto",
+    marginLeft: "100px",
     display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%"
+    maxWidth: "135%",
+    maxHeight: "135%"
+  },
+  name: {
+    fontWeight: "Bold",
+    fontSize: "18px"
+  },
+  texts: {
+    marginLeft: "100px",
+    marginTop: "10px",
+    textAlign: "left"
   }
 }));
 
@@ -38,7 +49,7 @@ const Item = () => {
     var myPath = path.split("/");
     var id = myPath[1];
 
-    axios.get(`shops/${id}`).then(({ data }) => {
+    axios.get(`:id/${id}`).then(({ data }) => {
       setData(data);
     });
   }, [setData]);
@@ -50,46 +61,62 @@ const Item = () => {
     <div className={classes.root}>
       {Array.isArray(data) &&
         data.map(place => (
-          <Paper className={classes.paper}>
-            <Grid container spacing={2}>
-              <Grid item>
-                <ButtonBase className={classes.image}>
-                  <img className={classes.img} alt="hall" src={place.image} />
-                </ButtonBase>
-              </Grid>
-              <Grid item xs={12} sm container>
-                <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
-                    <Typography
-                      key={place._id}
-                      gutterBottom
-                      variant="subtitle1"
-                    >
-                      {place.name}
-                    </Typography>
-                    <Typography key={place._id} variant="body2" gutterBottom>
-                      openingHours: {place.openingHours}
-                    </Typography>
-                    <Typography
-                      key={place._id}
-                      variant="body2"
-                      color="textSecondary"
-                    >
-                      {place.contactInfo}
-                    </Typography>
+          <Grid>
+            <Paper className={classes.paper}>
+              <Grid container spacing={2}>
+                <Grid item>
+                  <ButtonBase className={classes.image}>
+                    <img className={classes.img} alt="hall" src={place.image} />
+                  </ButtonBase>
+                </Grid>
+                <Grid item xs={12} sm container>
+                  <Grid
+                    item
+                    xs
+                    container
+                    direction="column"
+                    spacing={2}
+                    className={classes.texts}
+                  >
+                    <Grid item xs>
+                      <Typography
+                        key={place._id}
+                        gutterBottom
+                        variant="subtitle1"
+                        className={classes.name}
+                      >
+                        {place.name}
+                      </Typography>
+                      <Typography
+                        key={place._id}
+                        variant="body2"
+                        gutterBottom
+                        className={classes.openingHours}
+                      >
+                        OPENING HOURS : {place.openingHours}
+                      </Typography>
+                      <Typography
+                        key={place._id}
+                        variant="body2"
+                        color="textSecondary"
+                        className={classes.contact}
+                      >
+                        CONTACT INFORMATION : {place.contactInfo}
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="body2" style={{ cursor: "pointer" }}>
+                        <Link to={`/:id/${place.shopId}`}>Book now</Link>
+                      </Typography>
+                    </Grid>
                   </Grid>
                   <Grid item>
-                    <Typography variant="body2" style={{ cursor: "pointer" }}>
-                      <Link to={`/shops/${place.shopId}`}>Book now</Link>
-                    </Typography>
+                    <Typography variant="subtitle1">${place.price}</Typography>
                   </Grid>
                 </Grid>
-                <Grid item>
-                  <Typography variant="subtitle1">${place.price}</Typography>
-                </Grid>
               </Grid>
-            </Grid>
-          </Paper>
+            </Paper>
+          </Grid>
         ))}
     </div>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import ListItem from "./ListItem";
-import NavBar from "./NavBar";
+import Navbar from "./Nav";
 import $ from "jquery";
+
 export default class AppF extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +36,7 @@ export default class AppF extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <Navbar />
         <img
           src={this.state.backgroundImg}
           alt="hall"

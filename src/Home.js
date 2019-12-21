@@ -1,14 +1,12 @@
 import React from "react";
-import "./App.css";
 import $ from "jquery";
-// import Album from "./album";
-// import PrimarySearchAppBar from "./NavBar";
-import { red } from "@material-ui/core/colors";
-// import NavBar from "./NavBar";
-import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
+import "./App.css";
 import Navbar from "./Nav";
+import Footer from "./footer";
+import Button from "@material-ui/core/Button";
 
-class Home extends React.Component {
+class Album extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +14,6 @@ class Home extends React.Component {
     };
     var that = this;
   }
-
   componentDidMount() {
     var that = this;
     var id = window.location.href.split("=")[1];
@@ -25,6 +22,7 @@ class Home extends React.Component {
       type: "GET",
       dataType: "JSON",
       success: function(data) {
+        //   console.log(data);
         that.setState({ data: data });
         console.log(that.state.data);
       },
@@ -33,12 +31,11 @@ class Home extends React.Component {
       }
     });
   }
-
   render() {
     console.log(this.state.data);
     const listItems = this.state.data.map(mainSchema => (
       <div>
-        <img className="mainImg" src={mainSchema.mainComImg}></img>
+        <img className="img" src={mainSchema.mainComImg}></img>
         <p>{mainSchema.mainComDis}</p>
         <button>
           <Link to={`/${mainSchema.id}`}>EXPLORE MORE</Link>
@@ -49,12 +46,15 @@ class Home extends React.Component {
     ));
     return (
       <div>
+        <Link to="/ProceedToCheckout">
+          <Button>ProceedToCheckout</Button>
+        </Link>
         <Navbar />
-
         <ul className="yara">{listItems}</ul>
+        <Footer />
       </div>
     );
   }
 }
 
-export default Home;
+export default Album;

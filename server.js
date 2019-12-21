@@ -8,6 +8,8 @@ const jwt = require("jsonwebtoken");
 const app = express();
 
 process.env.SECRET_KEY = "secret";
+if (process.env.NODE_ENV != "production") require("dotenv").config();
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // //Config DB
 const mongoURI = require("./config/keys").mongoURI;
@@ -95,13 +97,6 @@ app.get("/shops/:id", (req, res) => {
     });
 });
 
-// app.get("/bg", (req, res) => {
-//   BgImgModel.findOne({ id: 1 }).then(BgImgModel => {
-//     res.json(BgImgModel);
-//     // console.log("dataaaaaa");
-//   });
-// });
-
 // app.get("/Appointments", (req, res) => {
 //   Appointments.find({}).then(Appointments => {
 //     res.json(Appointments);
@@ -109,12 +104,6 @@ app.get("/shops/:id", (req, res) => {
 // });
 
 app.get("/:id/:id/:id", (req, res) => {
-  ShopsModel.find({}).then(ShopsModel => {
-    res.json(ShopsModel);
-  });
-});
-
-app.get("/shops/1", (req, res) => {
   ShopsModel.find({}).then(ShopsModel => {
     res.json(ShopsModel);
   });
@@ -138,14 +127,6 @@ app.get("/id", function(req, res) {
 //________________________________Sign UP____________________________________
 //============================================================================
 app.post("/signup", (req, res) => {
-  // res.header("Access-Control-Allow-Origin",'*');
-  // res.header("Access-Control-Allow-Headers", "*");
-  // Form validation
-  // const { errors, isValid } = validateRegisterInput(body);
-  // // // Check validation
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
   var body = req.body;
   console.log(body.Email);
   const userData = {
@@ -184,12 +165,6 @@ app.post("/signup", (req, res) => {
 });
 //////////////////////////////////////////////////////////
 app.post("/signupO", (req, res) => {
-  // Form validation
-  // const { errors, isValid } = validateRegisterInput(body);
-  // // // Check validation
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
   var body = req.body;
   console.log(body.Email);
   const userData = {

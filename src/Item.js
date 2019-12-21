@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
+import Footer from "./footer";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -118,6 +119,7 @@ const Item = () => {
             </Paper>
           </Grid>
         ))}
+      <Footer />
     </div>
   );
 };

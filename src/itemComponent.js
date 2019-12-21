@@ -9,8 +9,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import MediaCard from "./cardForItem";
-// import NavBar from "./NavBar";
 import Calender from "./Calender";
 import SimpleImageSlider from "react-simple-image-slider";
 
@@ -36,16 +34,12 @@ export default class ItemComponent extends Component {
     if (id === "") {
       id = 9;
     }
-    // console.log(id_);
     $.ajax({
       type: "GET",
       url: `/item/${id}` + that.state.id,
       data: { id: id },
-
-      //       url: "/Appointments",
-      //       type: "GET",
       dataType: "JSON",
-      //   dataType: "application/json",
+
       success: function(data) {
         console.log("ajax", data);
         that.setState({

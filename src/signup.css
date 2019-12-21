@@ -1,16 +1,29 @@
-#btn1{
-    color: black;
-    font-size: 25px;
-  }
-  .inp{
-    width:30%;
-    margin-left: 10rem;
-  };
- h1{
+#btn1 {
+  color: black;
+  font-size: 25px;
+}
+.inp {
+  width: 40%;
+  margin-left: 4%;
+  height: 70;
+}
+
+h1 {
   margin-left: 10rem;
- }
- 
+}
 
+.contact-background-image {
+  background: url("https://wallpaper.wiki/wp-content/uploads/2017/06/Gradient-Wallpaper.jpg")
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
-
-
+#h1 {
+  margin-left: 27%;
+}
+#h2 {
+  margin-left: 0%;
+}

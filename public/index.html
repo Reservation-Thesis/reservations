@@ -15,6 +15,30 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script
+      type="text/javascript"
+      src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://jatayu.webkul.com:3000/socket.io/socket.io.js"
+    ></script>
+    <script type="text/javascript">
+      var uvOptions = {};
+      (function() {
+        var lng = $("html").attr("lang");
+        if (typeof lng == "undefined") {
+          var lng = $("html").attr("xml:lang");
+          if (typeof lng == "undefined") lng = "en";
+        }
+        var uv = document.createElement("script");
+        uv.type = "text/javascript";
+        uv.async = true;
+        uv.src = "https://jatayu.webkul.com//chat-io.php?id=1498&lng=" + lng;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(uv, s);
+      })();
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

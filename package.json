@@ -30,16 +30,20 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
     "react-simple-image-slider": "^1.0.2",
-    "react-social-login-buttons": "^3.0.0"
+    "react-social-login-buttons": "^3.0.0",
+    "react-stripe-checkout": "^2.6.3",
+    "semantic-ui-react": "^0.88.2",
+    "stripe": "^7.14.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false"
   },
   "eslintConfig": {
     "extends": "react-app"

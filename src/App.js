@@ -22,20 +22,24 @@ import ShopCalender from "./shopCalender";
 import MediaCard from "./cardForItem";
 import Calender from "./Calender";
 import Appointments from "./appointments";
-import Sth from "./Shop";
-import Home from "./Home";
 import shops from "./AppF";
+import Auth from "./Auth";
+import NavAS from "./navAfterSU";
+import NavASO from "./navAfterSO";
+import UserMain from "./userMain";
+import OwnerMain from "./ownerMain";
+import ProceedToCheckout from "./ProceedToCheckout";
+import Checkout from "./Checkout";
+import AddressForm from "./addressForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* <Navbar /> */}
-
         <Switch>
-          {/* <Route path="/" exact component={Album} /> */}
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={Album} />
+          <Route path="/auth" exact component={Auth} />
           <Route path="/about" component={About} />
           <Route path="/AppF" component={AppF} />
           <Route path="/signup" component={SignupU} />
@@ -46,7 +50,7 @@ function App() {
           <Route path="/navU" exact component={NavU} />
           <Route path="/navO" exact component={NavO} />
           <Route path="/profileU" exact component={PU} />
-          <Route path="/profileU" exact component={PO} />
+          <Route path="/profileO" exact component={PO} />
           <Route path="/owner" exact component={Owner} />
           <Route path="/list" exact component={NestedList} />
           {/* <Route path="/itemComponent" exact component={ItemComponent} /> */}
@@ -59,6 +63,17 @@ function App() {
           <Route path="/Calender" exact component={Calender} />
           <Route path="/MediaCard" exact component={MediaCard} />
           <Route path="/ShopCalender" exact component={ShopCalender} />
+          <Route path="/userMain" exact component={UserMain} />
+          <Route path="/ownerMain" exact component={OwnerMain} />
+          <Route path="/navAfterSU" exact component={NavAS} />
+          <Route path="/navAfterSO" exact component={NavASO} />
+          <Route
+            path="/ProceedToCheckout"
+            exact
+            component={ProceedToCheckout}
+          />
+          <Route path="/Checkout" exact component={Checkout} />
+          <Route path="/addressForm" exact component={AddressForm} />
           {/* <Route path="/item/:id" component={ItemComponent} /> */}
         </Switch>
       </div>

@@ -107,7 +107,7 @@ const Item = () => {
                     </Grid>
                     <Grid item>
                       <Typography variant="body2" style={{ cursor: "pointer" }}>
-                        <Link to={`/:id/${place.shopId}`}>Book now</Link>
+                        <Link to={`/item/${place._id}`}>Book now</Link>
                       </Typography>
                     </Grid>
                   </Grid>

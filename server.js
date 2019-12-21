@@ -42,14 +42,14 @@ const saveAppointment = require("./models/item.js");
 //     res.send(data);
 //   });
 // });
-// app.get("/", (req, res) => {
-//   mainModel
-//     .find({})
-//     .then(mainModel => res.json(mainModel))
-//     .catch(err => {
-//       res.send("error");
-//     });
-// });
+app.get("/", (req, res) => {
+  mainModel
+    .find({})
+    .then(mainModel => res.json(mainModel))
+    .catch(err => {
+      res.send("error");
+    });
+});
 
 //background image
 
@@ -109,11 +109,11 @@ app.get("/:id/:id/:id", (req, res) => {
   });
 });
 
-app.get("/id", function(req, res) {
-  var d = req.query.id;
+app.get("/item/:id", function(req, res) {
+  var d = req.query._id;
   console.log(d);
   console.log("Request Type:", req.method);
-  ShopsModel.findOne({ id: d }, (err, data) => {
+  ShopsModel.findOne({ _id: d }, (err, data) => {
     if (err) {
       console.log("Err", err);
     }

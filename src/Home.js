@@ -4,7 +4,6 @@ import { BrowserRouter as Route, Link } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Nav";
 import Footer from "./footer";
-import Button from "@material-ui/core/Button";
 
 class Album extends React.Component {
   constructor(props) {
@@ -12,7 +11,6 @@ class Album extends React.Component {
     this.state = {
       data: []
     };
-    var that = this;
   }
   componentDidMount() {
     var that = this;
@@ -46,9 +44,6 @@ class Album extends React.Component {
     ));
     return (
       <div>
-        <Link to="/ProceedToCheckout">
-          <Button>ProceedToCheckout</Button>
-        </Link>
         <Navbar />
         <ul className="yara">{listItems}</ul>
         <Footer />

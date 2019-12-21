@@ -15,8 +15,7 @@ import PU from "./profileU";
 import PO from "./profileO";
 import Owner from "./owner";
 import NestedList from "./list";
-import Item from "./Item";
-import ListItem from "./ListItem";
+
 import ItemComponent from "./itemComponent";
 import ShopCalender from "./shopCalender";
 import MediaCard from "./cardForItem";
@@ -56,7 +55,7 @@ function App() {
           {/* <Route path="/itemComponent" exact component={ItemComponent} /> */}
           {/* <Route path="/id/:id" exact component={shops} /> */}
           <Route path="/:id2" exact component={shops} />
-          <Route path="/:id" exact component={shops} />
+          <Route path="/id" exact component={shops} />
           {/* <Route path="/:id/:id" exact component={shops} /> */}
           <Route path="/:id/:id" exact component={ItemComponent} />
           <Route path="/Appointments" exact component={Appointments} />
@@ -74,7 +73,6 @@ function App() {
           />
           <Route path="/Checkout" exact component={Checkout} />
           <Route path="/addressForm" exact component={AddressForm} />
-          {/* <Route path="/item/:id" component={ItemComponent} /> */}
         </Switch>
       </div>
     </Router>

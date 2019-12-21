@@ -9,14 +9,18 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+// import MediaCard from "./cardForItem";
+// import NavBar from "./NavBar";
 import Calender from "./Calender";
 import SimpleImageSlider from "react-simple-image-slider";
-
+import NavAS from "./navAfterSU"
+import Footer from "./footer"
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 export default class ItemComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
+      _id: "",
       location: "",
       imageSlider: [],
       mainImage: "",
@@ -30,20 +34,23 @@ export default class ItemComponent extends Component {
     var that = this;
     var path = window.location.href;
     var myPath = path.split("/");
-    var id = myPath[1];
-    if (id === "") {
-      id = 9;
+    var _id = myPath[4];
+    if (_id === "") {
+      _id = "5dfd7fcd1c9d440000f1c166";
     }
+    console.log("this is the id" ,myPath);
     $.ajax({
       type: "GET",
-      url: `/item/${id}` + that.state.id,
-      data: { id: id },
+      url: `/item/${_id}`,
+      data: { _id: _id },
+      //       url: "/Appointments",
+      //       type: "GET",
       dataType: "JSON",
-
+      //   dataType: "application/json",
       success: function(data) {
-        console.log("ajax", data);
+        console.log( data);
         that.setState({
-          id: data.id,
+          _id: data._id,
           location: data.location,
           imageSlider: data.imageSlider,
           mainImage: data.image,
@@ -54,14 +61,13 @@ export default class ItemComponent extends Component {
         });
         console.log("DONE!");
         console.log("HERE IS THE DATA", data);
-        console.log(that.state.imageSlider);
+        console.log(that.state.name);
       },
       error: function(err) {
         console.log(err, "there is error in my sweet function!");
       }
     });
   }
-
   render() {
     const useStyles = makeStyles({
       card: {
@@ -69,7 +75,6 @@ export default class ItemComponent extends Component {
         minHeight: 600,
         float: "left",
         marginLeft: "30%",
-
         marginTop: "3rem",
         fontSize: "36px"
       },
@@ -80,15 +85,15 @@ export default class ItemComponent extends Component {
     var that = this;
     var MediaCard = function() {
       const classes = useStyles();
-
       return (
-        <>
-          <Card className={classes.card}>
+       
+        <center>
+       
+          <Card className={classes.card} style={{width:"40%"}}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
                 image={that.state.mainImage}
-                title="marrge hall"
               />
               <CardContent>
                 <Typography
@@ -97,7 +102,7 @@ export default class ItemComponent extends Component {
                   component="h2"
                   style={{ fontSize: "2.5rem" }}
                 >
-                  <center>{that.state.name}</center>
+                  <center style={{color:"#9F1023",fontSize:"5rem"}}>{that.state.name}</center>
                 </Typography>
                 <Typography
                   variant="body2"
@@ -105,14 +110,14 @@ export default class ItemComponent extends Component {
                   component="p"
                   style={{ fontSize: "1.5rem" }}
                 >
-                  <div
+                  {/* <div
                     style={{
                       marginRight: "3em",
                       marginTop: "2em",
                       marginLeft: "7em"
                     }}
-                  >
-                    <center>
+                  > */}
+                    <center style={{color:"#B64D5B"}}>
                       <h2>{that.state.price} per Hour</h2>
                       <h2>Details : {that.state.details}</h2>
                       <h2>
@@ -120,12 +125,12 @@ export default class ItemComponent extends Component {
                         Contact Info : {that.state.contactInfo} <br />
                       </h2>
                     </center>
-                  </div>
+                  {/* </div> */}
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button
+              {/* <Button
                 variant="contained"
                 color="secondary"
                 style={{
@@ -135,8 +140,16 @@ export default class ItemComponent extends Component {
                 }}
               >
                 reserve now!
-              </Button>
-              <Button
+              </Button> */}
+              <Link to="/ProceedToCheckout">
+          <Button  variant="contained"
+                color="secondary"
+                style={{
+                  height: "4rem",
+                  fontSize: "1.5rem",
+                  marginLeft: "10rem"}} > ProceedToCheckout </Button>
+        </Link>
+              {/* <Button
                 variant="contained"
                 color="secondary"
                 style={{
@@ -146,18 +159,17 @@ export default class ItemComponent extends Component {
                 }}
               >
                 see available time
-              </Button>
+              </Button> */}
             </CardActions>
           </Card>
-          <Calender />
-        </>
+          {/* <Calender /> */}
+       
+        </center>
       );
     };
-
     return (
-      <div>
-        {" "}
-        {/* <NavBar /> */}
+      <>
+        <NavAS />
         <span style={{ display: "block" }}>
           <center>
             <SimpleImageSlider
@@ -178,7 +190,10 @@ export default class ItemComponent extends Component {
           style={{ border: "1", float: "right", marginTop: "3rem" }}
           allowfullscreen=""
         ></iframe>
-      </div>
+    
+          <div style={{marginTop:"70%"}}><Footer /></div>
+         
+         </>
     );
   }
 }

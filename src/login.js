@@ -32,7 +32,7 @@ class Login extends React.Component {
 
     var that = this;
     $.ajax({
-      url: "http://localhost:8000/login",
+      url: "/login",
       type: "POST",
       data: {
         Email: that.state.Email,

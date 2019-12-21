@@ -6,7 +6,7 @@ function About() {
   return (
     <div>
       <Navbar />
-      <img className="pic" src="https://i.ibb.co/Jp509MX/1.jpg" />
+
       <br />
 
       <h2>

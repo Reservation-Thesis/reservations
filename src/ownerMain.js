@@ -16,7 +16,7 @@ class OwnerMain extends React.Component {
     var that = this;
     var id = window.location.href.split("=")[1];
     $.ajax({
-      url: "http://localhost:8000/ownerMain",
+      url: "/ownerMain",
       type: "GET",
       dataType: "JSON",
       success: function(data) {

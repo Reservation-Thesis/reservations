@@ -48,7 +48,7 @@ class SignupO extends React.Component {
       var that = this;
 
       $.ajax({
-        url: "http://localhost:8000/signupO",
+        url: "/signupO",
         type: "POST",
         data: that.state.status,
         datatype: "json",

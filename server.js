@@ -42,14 +42,14 @@ const saveAppointment = require("./models/item.js");
 //     res.send(data);
 //   });
 // });
-app.get("/", (req, res) => {
-  mainModel
-    .find({})
-    .then(mainModel => res.json(mainModel))
-    .catch(err => {
-      res.send("error");
-    });
-});
+// app.get("/", (req, res) => {
+//   mainModel
+//     .find({})
+//     .then(mainModel => res.json(mainModel))
+//     .catch(err => {
+//       res.send("error");
+//     });
+// });
 
 //background image
 
@@ -266,11 +266,11 @@ app.post("/Appointments", function(req, res) {
   });
 });
 
-app.get("/item/:id", (req, res) => {
-  ShopsModel.findOne({}).then(ShopsModel => {
-    res.json(ShopsModel);
-  });
-});
+// app.get("/item/:id", (req, res) => {
+//   ShopsModel.findOne({}).then(ShopsModel => {
+//     res.json(ShopsModel);
+//   });
+// });
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("/build"));
